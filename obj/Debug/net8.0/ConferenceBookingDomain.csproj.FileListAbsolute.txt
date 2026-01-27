@@ -1,0 +1,5 @@
+C:\Users\Training Center 1\Desktop\ConferenceBookingDomain\obj\Debug\net8.0\ConferenceBookingDomain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Training Center 1\Desktop\ConferenceBookingDomain\obj\Debug\net8.0\ConferenceBookingDomain.AssemblyInfoInputs.cache
+C:\Users\Training Center 1\Desktop\ConferenceBookingDomain\obj\Debug\net8.0\ConferenceBookingDomain.AssemblyInfo.cs
+C:\Users\Training Center 1\Desktop\ConferenceBookingDomain\obj\Debug\net8.0\ConferenceBookingDomain.csproj.CoreCompileInputs.cache
+C:\Users\Training Center 1\Desktop\ConferenceBookingDomain\obj\Debug\net8.0\ConferenceBookingDomain.sourcelink.json
