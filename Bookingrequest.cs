@@ -1,3 +1,16 @@
+
+namespace RoomBookingApp.Domain
+{
+    public class BookingRequest
+    {
+        // Change this from int to Guid
+        public Guid RoomId { get; set; } 
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+    }
+}
+
+
 public record Booking
  { 
     public Guid Id 

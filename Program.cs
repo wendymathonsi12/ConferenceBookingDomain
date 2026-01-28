@@ -1,6 +1,8 @@
-﻿// Domain namespace 
+﻿using System;
+using RoomBookingApp;
+using RoomBookingApp.Domain;  
+using RoomBookingApp.Services;
 
- 
 
 Console.WriteLine("Conference Booking Domain");
  try { 
