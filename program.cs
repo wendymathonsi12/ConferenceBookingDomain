@@ -1,5 +1,6 @@
-namespace ConferenceRoom;
-public class Program
+namespace ConferenceRoom
+{
+    public class Program
 {
     public static async Task Main()
     {
@@ -45,4 +46,6 @@ public class Program
             Console.WriteLine($"Caught Validation Error: {ex.Message}");
         }
     }
+}
+
 }
