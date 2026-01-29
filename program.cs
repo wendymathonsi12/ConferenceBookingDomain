@@ -1,51 +1,21 @@
-namespace ConferenceRoom
+using ConferenceRoomDomain;
+static async Task Main()
 {
-    public class Program
-{
-    public static async Task Main()
+
+
+    SeedData data = new SeedData();
+    List<ConferenceRoom> rooms = data.SeedData();
+    Bookingmanager manager = new Bookingmanager();
+    BookingFileStore store = new BookingFileStore("booking.json");
+        try
     {
-        Console.WriteLine("--- Conference Booking System 1.3 ---");
-        var room = new ConferenceRoom("BitCube Boardroom", 10, RoomLayout.Medium);
-
-      
-        try
-        {
-            var booking1 = new Booking(room.Id, DateTime.Now.AddHours(1), DateTime.Now.AddHours(2));
-            room.AddBooking(booking1);
-            Console.WriteLine("Success: Booking 1 added.");
-
-          
-            await BookingFileService.SaveBookingsAsync(room.Bookings);
-            Console.WriteLine("Success: Data persisted to file.");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Unexpected Error: {ex.Message}");
-        }
-
-        
-        try
-        {
-            Console.WriteLine("\nAttempting overlapping booking...");
-            var booking2 = new Booking(room.Id, DateTime.Now.AddHours(1.5), DateTime.Now.AddHours(2.5));
-            room.AddBooking(booking2);
-        }
-        catch (BookingConflictException ex)
-        {
-            Console.WriteLine($"Caught Expected Conflict: {ex.Message}");
-        }
-
-    
-        try
-        {
-            Console.WriteLine("\nAttempting invalid room creation...");
-            var badRoom = new ConferenceRoom("", -5, RoomLayout.small);
-        }
-        catch (ArgumentException ex)
-        {
-            Console.WriteLine($"Caught Validation Error: {ex.Message}");
-        }
+      manager.CreateBooking(new BookingRequest(rooms[0]), 
+      DateTime.Now, DateTime.Now.AddHours(1));
+      await store.SaveAsynce(manager.GetBookings());
     }
-}
+    catch(BookingConflictException ex)
+    {
+        System.Console.WriteLine(ex.Message);
+    }
 
 }

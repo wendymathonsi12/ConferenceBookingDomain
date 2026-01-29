@@ -1,15 +1,9 @@
-public record Booking
- { 
-    public Guid Id 
-    { 
-        get;
-         init; 
-        } 
-    public Guid RoomId 
-    {
-         get;
-          init;
-    } 
+using ConferenceRoomDomain;
+
+public record BookingRequest
+ {
+    private ConferenceRoom conferenceRoom;
+
     public DateTime StartTime 
     { 
         get; 
@@ -24,16 +18,22 @@ public record Booking
      {
          get;
           private set; }
-     public Booking(Guid roomId, DateTime start, DateTime end)
+    public object Room { get; internal set; }
+
+    public BookingRequest(Guid roomId, DateTime start, DateTime end)
       { 
         if (end <= start) throw new ArgumentException("End time must be after start time.");
-         Id = Guid.NewGuid();
-          RoomId = roomId; 
           StartTime = start; 
           EndTime = end; 
           Status = BookingStatus.Pending; 
     }
-     public void UpdateStatus(BookingStatus newStatus) 
+
+    public BookingRequest(ConferenceRoom conferenceRoom)
+    {
+        this.conferenceRoom = conferenceRoom;
+    }
+
+    public void UpdateStatus(BookingStatus newStatus) 
     { 
         
         if (Status == BookingStatus.Cancelled || Status == BookingStatus.Completed) 

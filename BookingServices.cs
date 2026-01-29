@@ -1,3 +1,5 @@
+namespace ConferenceRoomDomain;
+
 public class BookingService
 {
     private readonly List<ConferenceRoom> _rooms = new();
