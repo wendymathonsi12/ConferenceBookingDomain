@@ -1,6 +1,4 @@
-﻿// Domain namespace 
-
- 
+﻿
 
 Console.WriteLine("Conference Booking Domain");
  try { 
