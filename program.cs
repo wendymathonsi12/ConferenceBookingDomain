@@ -1,3 +1,4 @@
+namespace ConferenceRoom;
 public class Program
 {
     public static async Task Main()
@@ -5,14 +6,14 @@ public class Program
         Console.WriteLine("--- Conference Booking System 1.3 ---");
         var room = new ConferenceRoom("BitCube Boardroom", 10, RoomLayout.Medium);
 
-        // 1. Valid Scenario
+      
         try
         {
             var booking1 = new Booking(room.Id, DateTime.Now.AddHours(1), DateTime.Now.AddHours(2));
             room.AddBooking(booking1);
             Console.WriteLine("Success: Booking 1 added.");
 
-            // Save Asynchronously
+          
             await BookingFileService.SaveBookingsAsync(room.Bookings);
             Console.WriteLine("Success: Data persisted to file.");
         }
@@ -21,7 +22,7 @@ public class Program
             Console.WriteLine($"Unexpected Error: {ex.Message}");
         }
 
-        // 2. Invalid Scenario (Conflict)
+        
         try
         {
             Console.WriteLine("\nAttempting overlapping booking...");
@@ -33,7 +34,7 @@ public class Program
             Console.WriteLine($"Caught Expected Conflict: {ex.Message}");
         }
 
-        // 3. Invalid Scenario (Guard Clause)
+    
         try
         {
             Console.WriteLine("\nAttempting invalid room creation...");

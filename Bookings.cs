@@ -1,4 +1,6 @@
-public record Booking
+namespace ConferenceRoom
+{
+    public record Booking
 {
  public Guid Id { get; init; }
  public Guid RoomId { get; init; }
@@ -17,4 +19,6 @@ public record Booking
  }
  public void Confirm() => Status = BookingStatus.Confirmed;
  public void Cancel() => Status = BookingStatus.Cancelled;
+}
+
 }
